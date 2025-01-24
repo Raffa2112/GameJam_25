@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Sweet_Dreams.sln"
+    "dotnet.defaultSolution": "GameJam_25.sln"
 }
