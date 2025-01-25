@@ -1,8 +1,6 @@
 using System;
 using UnityEngine;
 
-using UnityEngine;
-
 public class GunAimingSystem : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera; // Reference to the main camera

@@ -340,8 +340,12 @@ MonoBehaviour:
   floatSpeed: 0.5
   floatDuration: 5
   MoveSpeed: 0
-  AttackRange: 6
-  AttackRate: 2
+  AttackRange: 8
+  AttackRate: 1
+  BulletSpeed: 10
+  ToothPrefab: {fileID: 251228971309557830, guid: 7b2ec7ea951eb474f820101fa24a028a,
+    type: 3}
+  ProjectileSpawnPoint: {fileID: 2613765853040873867}
 --- !u!1 &4659182079051122920
 GameObject:
   m_ObjectHideFlags: 0

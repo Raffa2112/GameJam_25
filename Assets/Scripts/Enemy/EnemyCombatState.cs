@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class EnemyCombatState : EnemyBaseState
 {
-    private float attackRange = 2f;
-    private float attackRate = 2f;
-    private float nextAttackTime = 0f;
 
     public override void EnterState(Enemy enemy)
     {
@@ -15,20 +12,16 @@ public class EnemyCombatState : EnemyBaseState
 
     public override void UpdateState(Enemy enemy)
     {
-        
-        float distance = Vector3.Distance(enemy.transform.position, enemy.PlayerTransform.position);
-        if (distance > attackRange)
+        if(enemy.Type == EnemyType.Plant)
         {
-            enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, enemy.PlayerTransform.position, enemy.MoveSpeed * Time.deltaTime);
-        }
-        else
-        {
-            if (Time.time >= nextAttackTime)
+            if(enemy.AttackRange >= Vector3.Distance(enemy.transform.position, enemy.PlayerTransform.position))
             {
-                // enemy.Attack();
-                nextAttackTime = Time.time + 1f / attackRate;
+                enemy.transform.LookAt(enemy.PlayerTransform);
+                enemy.Shoot();
             }
+            
         }
+        
         
     }
 }

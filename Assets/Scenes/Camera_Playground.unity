@@ -698,32 +698,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2107113139}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1291762014 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4536271929619104755, guid: e9d4594d8a4400c4f978db288a0aaa6d,
-    type: 3}
-  m_PrefabInstance: {fileID: 5125050153817059915}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1291762019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1291762014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b5a5859cd947bb428aaf3e19a54cd9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 0
-  PlayerTransform: {fileID: 6002269588622870171}
-  floatHeight: 2
-  floatSpeed: 0.5
-  floatDuration: 5
-  MoveSpeed: 1
-  AttackRange: 2
-  AttackRate: 2
 --- !u!1001 &1303983199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1249,6 +1223,7 @@ MonoBehaviour:
     m_Bits: 8
   maxAimDistance: 100
   _inputReader: {fileID: 11400000, guid: 27ac1b5002364cb49b600f451e587251, type: 2}
+  joystickDeadZone: 0.1
 --- !u!1 &1501227855
 GameObject:
   m_ObjectHideFlags: 0
@@ -2160,11 +2135,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4536271929619104755, guid: e9d4594d8a4400c4f978db288a0aaa6d,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1291762019}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9d4594d8a4400c4f978db288a0aaa6d, type: 3}
 --- !u!114 &5209271452334283993
 MonoBehaviour:

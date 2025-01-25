@@ -23,12 +23,18 @@ public class Enemy : MonoBehaviour
     public float AttackRange = 2f;
     public float AttackRate = 2f;
 
+    [Header("Shoot Variables")]
+    private float ReloadTimer = 0;
+    public float BulletSpeed = 10f;
+    public Tooth ToothPrefab;
+    public Transform ProjectileSpawnPoint;
     private EnemyBaseState currentState;
     [HideInInspector]
     public EnemyPatrollingState PatrollingState = new EnemyPatrollingState();
     [HideInInspector]
     public EnemyCombatState CombatState = new EnemyCombatState();
-
+    [HideInInspector]
+    public EnemyStunnedState StunnedState = new EnemyStunnedState();
     private void Awake()
     {
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -50,7 +56,9 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         currentState.UpdateState(this);
+        
     }
 
     //on trigger collider if collided by bubble then activate bubble child object
@@ -67,7 +75,39 @@ public class Enemy : MonoBehaviour
             }
             //destroy other gameobject
             Destroy(other.gameObject);
+
+            //change states 
+
+            currentState = StunnedState;
+            currentState.EnterState(this);
+            
         }
+
+        
+    }
+
+    
+
+    public void Shoot()
+    {
+        Debug.Log(ReloadTimer);
+        ReloadTimer -= Time.deltaTime;
+        if(ReloadTimer > 0)
+        {
+            // AudioSource.PlayOneShot(ClipCocking);
+            return;
+        }
+        // Starts reloading
+        ReloadTimer = AttackRate;
+        // Shoot!
+        Tooth Projectilie = Instantiate(ToothPrefab, ProjectileSpawnPoint.position, ProjectileSpawnPoint.rotation);
+        Projectilie.Speed = BulletSpeed;
+
+        // Sound
+        // AudioSource.PlayOneShot(ClipShooting);
+
+        // Screenshake
+        // Impulse.GenerateImpulse();
 
         
     }
