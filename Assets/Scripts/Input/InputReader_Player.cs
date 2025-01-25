@@ -8,6 +8,7 @@ public class InputReader_Player : ScriptableObject, IPlayerActions
 {
     public event Action<Vector2> MoveEvent;
     public event Action JumpEvent;
+    public event Action JumpCancelledEvent;
 
     private Game_Controls _playerInput;
 
@@ -48,7 +49,15 @@ public class InputReader_Player : ScriptableObject, IPlayerActions
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started || context.performed)
+        {
+            Debug.Log("Jump");
             JumpEvent?.Invoke();
+        }
+        else
+        {
+            Debug.Log("Jump Cancelled");
+            JumpCancelledEvent?.Invoke();
+        }
     }
 }

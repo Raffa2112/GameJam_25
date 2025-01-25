@@ -220,6 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e9035cd0c14ee49b9ffc594e0d0176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialJumpVelocity: 10
-  _gravityInAir: -9.81
+  _initialJumpVelocity: 2
+  _jumpBufferTime: 0.1
+  _coyoteTime: 0.15
+  _gravityInAir: -40
   _gravityOnGround: -0.3
