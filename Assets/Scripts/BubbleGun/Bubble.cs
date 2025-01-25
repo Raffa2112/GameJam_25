@@ -47,7 +47,7 @@ public class Bubble : MonoBehaviour
             }
 
             // Destroy the bullet on collision
-            Destroy(gameObject);
+            // Destroy(gameObject);
         }
 
     }
