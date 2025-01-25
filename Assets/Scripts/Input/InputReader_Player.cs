@@ -51,12 +51,10 @@ public class InputReader_Player : ScriptableObject, IPlayerActions
     {
         if (context.started || context.performed)
         {
-            Debug.Log("Jump");
             JumpEvent?.Invoke();
         }
         else
         {
-            Debug.Log("Jump Cancelled");
             JumpCancelledEvent?.Invoke();
         }
     }
