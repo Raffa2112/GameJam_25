@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class Player_Move : MonoBehaviour
+public class Player_Run : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private float _moveSpeed = 8f;
@@ -17,6 +17,9 @@ public class Player_Move : MonoBehaviour
     private Vector3 _towerRightDirection;
     private Vector3 _directionToTower;
 
+    private Vector3 _currentMovement = Vector3.zero;
+    public Vector3 CurrentMovement => _currentMovement;
+
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
@@ -24,8 +27,8 @@ public class Player_Move : MonoBehaviour
 
     private void Update()
     {
-        Vector3 towerCenterAlignedWithPlayer = new(CentreOfUniverse.Position.X, transform.position.y, CentreOfUniverse.Position.Z);
-        _directionToTower = (towerCenterAlignedWithPlayer - transform.position).normalized;
+        Vector3 centreAlignedWithPlayer = new(CentreOfUniverse.Position.X, transform.position.y, CentreOfUniverse.Position.Z);
+        _directionToTower = (centreAlignedWithPlayer - transform.position).normalized;
         _towerRightDirection = Vector3.Cross(Vector3.up, _directionToTower);
 
         DoMove();
@@ -59,7 +62,8 @@ public class Player_Move : MonoBehaviour
         //     _towerCenter.Rotate(Vector3.up, direction * (_rotationSpeed * Mathf.Rad2Deg) * Time.deltaTime);
         // }
 
-        _controller.Move(moveDirection * _moveSpeed * Time.deltaTime);
+        _currentMovement = _moveSpeed * moveDirection;
+        // _controller.Move(_moveSpeed * Time.deltaTime * moveDirection);
     }
 
     public void SetMoveDirection(Vector2 movement)
