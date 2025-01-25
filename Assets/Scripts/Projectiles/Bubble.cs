@@ -23,8 +23,8 @@ public class Bubble : MonoBehaviour
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log("Bubble created");
-            Debug.Log("Bubble speed: " + Speed);
+            // Debug.Log("Bubble created");
+            // Debug.Log("Bubble speed: " + Speed);
             Rigidbody.velocity = transform.forward * Speed;
         }
 
@@ -45,7 +45,7 @@ public class Bubble : MonoBehaviour
             if (rigidbody != null)
             {
                 rigidbody.AddExplosionForce(Force, transform.position, Radius);
-                Debug.Log("hit!" + rigidbody.name);
+                // Debug.Log("hit!" + rigidbody.name);
             }
 
             // Destroy the bullet on collision

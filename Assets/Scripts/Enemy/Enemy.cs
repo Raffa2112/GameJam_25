@@ -59,16 +59,17 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Bubble"))
         {
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
-            Debug.Log("Bubble hit enemy");
+            // Debug.Log("Bubble hit enemy");
             // Start floating effect
             if (!isFloating)
             {
                 StartCoroutine(FloatEffect());
             }
+            //destroy other gameobject
+            Destroy(other.gameObject);
         }
 
-        //destroy other gameobject
-        Destroy(other.gameObject);
+        
     }
 
     private IEnumerator FloatEffect()
