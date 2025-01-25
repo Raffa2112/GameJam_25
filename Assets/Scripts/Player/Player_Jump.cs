@@ -8,6 +8,7 @@ public class Player_Jump : MonoBehaviour
     [SerializeField] private float _initialJumpVelocity = 10f;
     [SerializeField] private float _jumpBufferTime = 0.1f;
     [SerializeField] private float _coyoteTime = 0.1f;
+    [SerializeField, Range(0, 1)] private float _fallMultiplier = 0.5f;
 
     [Header("Gravity Settings")]
     [SerializeField] private float _gravityInAir = -9.81f;
@@ -26,9 +27,9 @@ public class Player_Jump : MonoBehaviour
 
     private void Update()
     {
-        if (_jumpBufferTimer > 0)
+        if (_jumpBufferTimer > 0f)
             _jumpBufferTimer -= Time.deltaTime;
-        if (_coyoteTimer > 0)
+        if (_coyoteTimer > 0f)
             _coyoteTimer -= Time.deltaTime;
 
         if (!_controller.isGrounded)
@@ -42,15 +43,22 @@ public class Player_Jump : MonoBehaviour
         }
 
         // was jump pressed in buffer timeframe & is still in coyote time
-        if (_jumpBufferTimer > 0 && _coyoteTimer > 0)
+        if (_jumpBufferTimer > 0f && _coyoteTimer > 0f)
         {
-            _currentMovement.y += Mathf.Sqrt(_initialJumpVelocity * 2 * -_gravityInAir);
-            _jumpBufferTimer = 0;
+            _currentMovement.y = Mathf.Sqrt(_initialJumpVelocity * 2f * -_gravityInAir);
+            _jumpBufferTimer = 0f;
+            _coyoteTimer = 0f;
         }
     }
 
     public void JumpPressed()
     {
         _jumpBufferTimer = _jumpBufferTime;
+    }
+
+    public void JumpReleased()
+    {
+        if (_currentMovement.y > 0f)
+            _currentMovement.y *= _fallMultiplier;
     }
 }
