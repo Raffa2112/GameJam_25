@@ -7,6 +7,7 @@ using static Game_Controls;
 public class InputReader_Player : ScriptableObject, IPlayerActions
 {
     public event Action<Vector2> MoveEvent;
+    public event Action JumpEvent;
 
     private Game_Controls _playerInput;
 
@@ -43,5 +44,11 @@ public class InputReader_Player : ScriptableObject, IPlayerActions
     public void OnMovement(InputAction.CallbackContext context)
     {
         MoveEvent?.Invoke(context.ReadValue<Vector2>());
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.started)
+            JumpEvent?.Invoke();
     }
 }
