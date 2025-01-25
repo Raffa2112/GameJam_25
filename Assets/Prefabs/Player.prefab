@@ -160,6 +160,7 @@ GameObject:
   - component: {fileID: 5209271451977915135}
   - component: {fileID: 8953487807625730087}
   - component: {fileID: 7852987382643806086}
+  - component: {fileID: 6018938995446614398}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -321,9 +322,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e9035cd0c14ee49b9ffc594e0d0176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialJumpVelocity: 2
+  _jumpHeight: 2
   _jumpBufferTime: 0.1
   _coyoteTime: 0.15
   _fallMultiplier: 0.5
   _gravityInAir: -40
   _gravityOnGround: -0.3
+--- !u!114 &6018938995446614398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8495063446791047688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ca1eb40e4575545820861551b8e327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _growthStats: {fileID: 11400000, guid: 7bf21d3ee84a9d140b6b8dfe39e59e2d, type: 2}
+  _jumpStats:
+  - {fileID: 11400000, guid: 305fb53127da5034e8627b8873c36574, type: 2}
+  - {fileID: 11400000, guid: e11750b2329d6a84eb90f7ecf79b3ca2, type: 2}
+  - {fileID: 11400000, guid: e99d25c29f2eece4baf12912d42c42e3, type: 2}

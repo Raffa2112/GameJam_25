@@ -5,14 +5,16 @@ public class Player_Jump : MonoBehaviour
     private CharacterController _controller;
 
     [Header("Jump Settings")]
-    [SerializeField] private float _initialJumpVelocity = 10f;
     [SerializeField] private float _jumpBufferTime = 0.1f;
     [SerializeField] private float _coyoteTime = 0.1f;
     [SerializeField, Range(0, 1)] private float _fallMultiplier = 0.5f;
 
     [Header("Gravity Settings")]
-    [SerializeField] private float _gravityInAir = -9.81f;
     [SerializeField] private float _gravityOnGround = -0.05f;
+
+    // Growth Stats //
+    private float _jumpHeight = 2f;
+    private float _gravityInAir = -9.81f;
 
     private float _jumpBufferTimer = 0f;
     private float _coyoteTimer = 0f;
@@ -45,7 +47,7 @@ public class Player_Jump : MonoBehaviour
         // was jump pressed in buffer timeframe & is still in coyote time
         if (_jumpBufferTimer > 0f && _coyoteTimer > 0f)
         {
-            _currentMovement.y = Mathf.Sqrt(_initialJumpVelocity * 2f * -_gravityInAir);
+            _currentMovement.y = Mathf.Sqrt(_jumpHeight * 2f * -_gravityInAir);
             _jumpBufferTimer = 0f;
             _coyoteTimer = 0f;
         }
@@ -61,4 +63,14 @@ public class Player_Jump : MonoBehaviour
         if (_currentMovement.y > 0f)
             _currentMovement.y *= _fallMultiplier;
     }
+
+    #region Growth Stats
+
+    public void SetJumpStats(JumpStats_SO jumpStats)
+    {
+        _jumpHeight = jumpStats.JumpHeight;
+        _gravityInAir = jumpStats.GravityInAir;
+    }
+
+    #endregion
 }
