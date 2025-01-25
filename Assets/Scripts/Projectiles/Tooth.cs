@@ -19,9 +19,15 @@ public class Tooth : MonoBehaviour
         public float Force = 100; // Netwons
         [Range(0.1f, 1)]
         public float Radius = 0.25f; // m
+        public int TimeToLive = 6;
 
         // Start is called before the first frame update
         void Start()
+        {
+            // Rigidbody.velocity = transform.forward * Speed;
+        }
+
+        public void ShootProjectile()
         {
             Rigidbody.velocity = transform.forward * Speed;
         }

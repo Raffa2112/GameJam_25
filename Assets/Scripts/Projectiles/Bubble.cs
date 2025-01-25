@@ -28,6 +28,10 @@ public class Bubble : MonoBehaviour
             Rigidbody.velocity = transform.forward * Speed;
         }
 
+        // public void ShootProjectile()
+        // {
+        //     Rigidbody.velocity = transform.forward * Speed;
+        // }
         void Update()
         {
             // If the bullet has no more time to live

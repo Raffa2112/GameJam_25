@@ -24,12 +24,14 @@ public class Player_Controller : MonoBehaviour
     {
         _inputReader.MoveEvent += OnMovementInput;
         _inputReader.JumpEvent += OnJumpInput;
+        _inputReader.JumpCancelledEvent += OnJumpReleaseInput;
     }
 
     private void OnDisable()
     {
         _inputReader.MoveEvent -= OnMovementInput;
         _inputReader.JumpEvent -= OnJumpInput;
+        _inputReader.JumpCancelledEvent -= OnJumpReleaseInput;
     }
 
     private void OnMovementInput(Vector2 movement)
@@ -42,11 +44,16 @@ public class Player_Controller : MonoBehaviour
         _playerJump.JumpPressed();
     }
 
+    private void OnJumpReleaseInput()
+    {
+        _playerJump.JumpReleased();
+    }
+
     private void Update()
     {
         // get all movement vectors
-        _currentMovement = new(_playerRun.CurrentMovement.x, _currentMovement.y, _playerRun.CurrentMovement.z);
-        _currentMovement.y = _playerJump.CurrentMovement.y;
+        _currentMovement = new(_playerRun.CurrentMovement.x, _playerJump.CurrentMovement.y, _playerRun.CurrentMovement.z);
+        // _currentMovement.y = _playerJump.CurrentMovement.y;
 
         // apply movement
         _controller.Move(_currentMovement * Time.deltaTime);

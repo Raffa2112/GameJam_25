@@ -28,6 +28,9 @@ public class Enemy : MonoBehaviour
     public float BulletSpeed = 10f;
     public Tooth ToothPrefab;
     public Transform ProjectileSpawnPoint;
+  
+    public int poolSize = 10;
+    
     private EnemyBaseState currentState;
     [HideInInspector]
     public EnemyPatrollingState PatrollingState = new EnemyPatrollingState();
@@ -90,7 +93,7 @@ public class Enemy : MonoBehaviour
 
     public void Shoot()
     {
-        Debug.Log(ReloadTimer);
+        // Debug.Log(ReloadTimer);
         ReloadTimer -= Time.deltaTime;
         if(ReloadTimer > 0)
         {
@@ -100,8 +103,17 @@ public class Enemy : MonoBehaviour
         // Starts reloading
         ReloadTimer = AttackRate;
         // Shoot!
-        Tooth Projectilie = Instantiate(ToothPrefab, ProjectileSpawnPoint.position, ProjectileSpawnPoint.rotation);
-        Projectilie.Speed = BulletSpeed;
+        // Tooth Projectile = Instantiate(ToothPrefab, ProjectileSpawnPoint.position, ProjectileSpawnPoint.rotation);
+        Tooth Projectile = ProjectilePool.Instance.GetProjectile();
+        Projectile.transform.position = ProjectileSpawnPoint.position;
+        Projectile.transform.rotation = ProjectileSpawnPoint.rotation;
+        Projectile.Speed = BulletSpeed;
+        Projectile.ShootProjectile();
+
+        // Tooth projectile = projectilePool.GetProjectile();
+        // projectile.transform.position = ProjectileSpawnPoint.position;
+        // projectile.transform.rotation = ProjectileSpawnPoint.rotation;
+        // projectile.Speed = BulletSpeed;
 
         // Sound
         // AudioSource.PlayOneShot(ClipShooting);

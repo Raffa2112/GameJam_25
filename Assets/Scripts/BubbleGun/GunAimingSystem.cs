@@ -18,6 +18,7 @@ public class GunAimingSystem : MonoBehaviour
         // Get joystick or mouse-based aiming input
         // aimInput = _inputReader.GetAimInput(); // This should return a Vector2 (-1 to 1 for X, Y)
 
+        
         if (aimInput.sqrMagnitude > joystickDeadZone * joystickDeadZone)
         {
             AimGunWithJoystick();
@@ -27,7 +28,24 @@ public class GunAimingSystem : MonoBehaviour
             AimGunAtClosestEnemyToMouse();
         }
     }
+    void RotateGunAroundYAxis(Vector2 horizontalInput)
+    {
+        if (aimInput.sqrMagnitude > 0.01f)
+        {
+            // Calculate the angle from the input vector
+            float targetAngle = Mathf.Atan2(aimInput.x, aimInput.y) * Mathf.Rad2Deg;
 
+            // Rotate only on the Y-axis
+            Quaternion targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
+
+            // Smoothly interpolate to the target rotation
+            gunRotationPoint.rotation = Quaternion.Slerp(
+                gunRotationPoint.rotation, 
+                targetRotation, 
+                Time.deltaTime * 10f // Adjust speed as needed
+            );
+        }
+    }
     void OnEnable()
     {
         _inputReader.ShootEvent += OnShoot;
