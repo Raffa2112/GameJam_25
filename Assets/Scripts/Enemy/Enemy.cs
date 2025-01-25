@@ -1,24 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum EnemyType
+{
+    Toothling,
+    Plant
+}
 
 public class Enemy : MonoBehaviour
 {
+    public EnemyType Type;
+    [HideInInspector]
+    public Transform PlayerTransform;
+
+    [Header("Floating Effect Variables")]
     private bool isFloating = false;
     [SerializeField] private float floatHeight = 2f; // Height above the current position
     [SerializeField] private float floatSpeed = 0.5f; // Speed of floating motion
     [SerializeField] private float floatDuration = 5f; // How long the enemy floats before stopping
+    [Header("Enemy Stats")]
+    public float MoveSpeed = 1f;
+    public float AttackRange = 2f;
+    public float AttackRate = 2f;
+
+    private EnemyBaseState currentState;
+    [HideInInspector]
+    public EnemyPatrollingState PatrollingState = new EnemyPatrollingState();
+    [HideInInspector]
+    public EnemyCombatState CombatState = new EnemyCombatState();
+
+    private void Awake()
+    {
+        PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (Type == EnemyType.Toothling)
+        {
+            currentState = PatrollingState;
+        }
+        else if (Type == EnemyType.Plant)
+        {
+            currentState = CombatState;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        currentState.UpdateState(this);
     }
 
     //on trigger collider if collided by bubble then activate bubble child object

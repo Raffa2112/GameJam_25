@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bubble : MonoBehaviour
-    {
-        [Header("Physics")]
+public class Tooth : MonoBehaviour
+{
+    [Header("Physics")]
         public Rigidbody Rigidbody;
         [HideInInspector]
         public float Speed; // m/s
@@ -49,5 +49,4 @@ public class Bubble : MonoBehaviour
             // Destroy the bullet on collision
             // Destroy(gameObject);
         }
-
-    }
+}

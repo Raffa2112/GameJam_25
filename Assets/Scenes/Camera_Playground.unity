@@ -773,6 +773,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5a5859cd947bb428aaf3e19a54cd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  PlayerTransform: {fileID: 6002269588622870171}
+  floatHeight: 2
+  floatSpeed: 0.5
+  floatDuration: 5
+  MoveSpeed: 1
+  AttackRange: 2
+  AttackRate: 2
 --- !u!1 &1310537302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,7 +1996,7 @@ GameObject:
   - component: {fileID: 8953487807404269057}
   m_Layer: 0
   m_Name: Player (1)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
