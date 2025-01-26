@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float floatHeight = 2f; // Height above the current position
     [SerializeField] private float floatSpeed = 0.5f; // Speed of floating motion
     [SerializeField] private float floatDuration = 5f; // How long the enemy floats before stopping
+    public GameObject Bubble;
     [Header("Enemy Stats")]
     public float MoveSpeed = 1f;
     public float AttackRange = 2f;
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour
     public float BulletSpeed = 10f;
     public Tooth ToothPrefab;
     public Transform ProjectileSpawnPoint;
+    public GameObject EnemyHeadPivot;
   
     public int poolSize = 10;
     
@@ -69,7 +71,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bubble"))
         {
-            gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            Bubble.SetActive(true);
             // Debug.Log("Bubble hit enemy");
             // Start floating effect
             if (!isFloating)
