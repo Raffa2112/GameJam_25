@@ -53,6 +53,16 @@ public class ProjectilePoolPlayer : MonoBehaviour
         BubblePool.Enqueue(newProjectile);
         return newProjectile;
     }
+    public void ReturnProjectile( Bubble projectile)
+    {
+        // Deactivate the projectile and move it back to the deactivated pool
+        if (BubblePool.Contains(projectile))
+        {
+            BubblePool.Dequeue();
+        }
 
+        projectile.gameObject.SetActive(false);
+        BubblePool.Enqueue(projectile);
+    }
 
 }

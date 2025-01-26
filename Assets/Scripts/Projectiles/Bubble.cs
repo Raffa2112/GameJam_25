@@ -25,13 +25,13 @@ public class Bubble : MonoBehaviour
         {
             // Debug.Log("Bubble created");
             // Debug.Log("Bubble speed: " + Speed);
-            Rigidbody.velocity = transform.forward * Speed;
+            // Rigidbody.velocity = transform.forward * Speed;
         }
 
-        // public void ShootProjectile()
-        // {
-        //     Rigidbody.velocity = transform.forward * Speed;
-        // }
+        public void ShootProjectile()
+        {
+            Rigidbody.velocity = transform.forward * Speed;
+        }
         void Update()
         {
             // If the bullet has no more time to live
