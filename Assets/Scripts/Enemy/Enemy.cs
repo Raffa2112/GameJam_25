@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
     public EnemyCombatState CombatState = new EnemyCombatState();
     [HideInInspector]
     public EnemyStunnedState StunnedState = new EnemyStunnedState();
+    private AudioSource AudioSource;
     private void Awake()
     {
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -48,6 +49,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioSource = GetComponent<AudioSource>();
         if (Type == EnemyType.Toothling)
         {
             currentState = PatrollingState;
@@ -71,6 +73,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bubble"))
         {
+            AudioSource.Play();
             Bubble.SetActive(true);
             // Debug.Log("Bubble hit enemy");
             // Start floating effect
