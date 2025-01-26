@@ -58,6 +58,9 @@ public class EnemyCombatState : EnemyBaseState
                 }
             }
             
+        }if(enemy.Type == EnemyType.Toothling)
+        {
+            enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, enemy.PlayerTransform.position, enemy.MoveSpeed * Time.deltaTime);
         }
         
         

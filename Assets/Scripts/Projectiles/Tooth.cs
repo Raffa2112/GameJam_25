@@ -67,4 +67,11 @@ public class Tooth : MonoBehaviour
         // Destroy the bullet on collision
         // Destroy(gameObject);
     }
+    private void OnTriggerEnter(Collider other) {
+        if(!other.gameObject.CompareTag("Enemy"))
+        {
+            ProjectilePool.Instance.ReturnProjectile(this.gameObject.GetComponent<Tooth>());
+        }
+        
+    }
 }
