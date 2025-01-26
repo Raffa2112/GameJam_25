@@ -101,7 +101,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -121,7 +121,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rigidbody: {fileID: 1687645119992578373}
   Speed: 0
-  Duration: 5
   Force: 100
   Radius: 0.25
   TimeToLive: 6

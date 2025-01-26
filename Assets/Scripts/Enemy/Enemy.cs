@@ -19,6 +19,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float floatSpeed = 0.5f; // Speed of floating motion
     [SerializeField] private float floatDuration = 5f; // How long the enemy floats before stopping
     public GameObject Bubble;
+    [Header("Enemy Stats Patrolling Toothling")]
+    public float detectionRadius = 5f;
+    
     [Header("Enemy Stats")]
     public float MoveSpeed = 1f;
     public float AttackRange = 2f;
@@ -30,9 +33,6 @@ public class Enemy : MonoBehaviour
     public Tooth ToothPrefab;
     public Transform ProjectileSpawnPoint;
     public GameObject EnemyHeadPivot;
-  
-    public int poolSize = 10;
-    
     private EnemyBaseState currentState;
     [HideInInspector]
     public EnemyPatrollingState PatrollingState = new EnemyPatrollingState();

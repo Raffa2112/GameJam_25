@@ -362,6 +362,7 @@ MonoBehaviour:
   floatSpeed: 0.5
   floatDuration: 5
   Bubble: {fileID: 6749483105903461206}
+  detectionRadius: 5
   MoveSpeed: 0
   AttackRange: 8
   AttackRate: 1
@@ -370,7 +371,6 @@ MonoBehaviour:
     type: 3}
   ProjectileSpawnPoint: {fileID: 8991401539161698132}
   EnemyHeadPivot: {fileID: 6094140771137993299}
-  poolSize: 10
 --- !u!1 &8193243268554888415
 GameObject:
   m_ObjectHideFlags: 0

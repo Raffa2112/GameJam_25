@@ -23,6 +23,7 @@ public class Tooth : MonoBehaviour
     public int TimeToLive = 6;
     [SerializeField] private int _damage = 10;
 
+    public GameObject FracturedTooth;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,5 +67,14 @@ public class Tooth : MonoBehaviour
 
         // Destroy the bullet on collision
         // Destroy(gameObject);
+    }
+    private void OnTriggerEnter(Collider other) {
+        if(!other.gameObject.CompareTag("Enemy"))
+        {
+            ProjectilePool.Instance.ReturnProjectile(this.gameObject.GetComponent<Tooth>());
+            GameObject fracturedTooth = Instantiate(FracturedTooth, transform.position, transform.rotation);
+            fracturedTooth.GetComponent<FractureExplode>().Explode();
+        }
+        
     }
 }
