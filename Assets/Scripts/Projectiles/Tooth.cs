@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Tooth : MonoBehaviour
@@ -12,7 +13,7 @@ public class Tooth : MonoBehaviour
     [Space]
     // When duration = 0, the bullets is destroyed
     [Range(1, 10)]
-    public float Duration = 5f; // seconds
+    private float Duration; // seconds
 
     [Header("Impact")]
     [Range(0, 1000)]
@@ -26,6 +27,7 @@ public class Tooth : MonoBehaviour
     void Start()
     {
         // Rigidbody.velocity = transform.forward * Speed;
+        Duration = TimeToLive;
     }
 
     public void ShootProjectile()
@@ -37,9 +39,13 @@ public class Tooth : MonoBehaviour
     {
         // If the bullet has no more time to live
         // it gets destroyed
-        // Duration -= Time.deltaTime;
-        // if (Duration <= 0)
-        //     Destroy(gameObject);
+        Duration -= Time.deltaTime;
+        if (Duration <= 0)
+            ProjectilePool.Instance.ReturnProjectile(this.gameObject.GetComponent<Tooth>());
+    
+    }
+    private void OnEnable() {
+        Duration = TimeToLive;
     }
 
     // Bullets die on collision

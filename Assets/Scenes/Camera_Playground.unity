@@ -217,7 +217,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Target.TrackingTarget
       value: 
-      objectReference: {fileID: 8905233416322235344}
+      objectReference: {fileID: 299978583}
     - target: {fileID: 9220015074302200843, guid: 96f0344443be34141bdc18cfe283172c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -347,11 +347,11 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 241806592}
   m_PrefabAsset: {fileID: 0}
---- !u!20 &387947270 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 664115379981377529, guid: 96f0344443be34141bdc18cfe283172c,
+--- !u!4 &299978583 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2709163702903951009, guid: 0c257f3c528f23f49a5ac843794f3d8a,
     type: 3}
-  m_PrefabInstance: {fileID: 212495627}
+  m_PrefabInstance: {fileID: 256364750756299275}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &821919597
 GameObject:
@@ -460,53 +460,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 821919597}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &835066766
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 835066767}
-  - component: {fileID: 835066768}
-  m_Layer: 0
-  m_Name: PlayerProjectilePool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &835066767
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 835066766}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.9263945, y: 7.4239125, z: -3.6909463}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &835066768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 835066766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de87fbecb4660a3459263ce553842e4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: -3892339416299390846, guid: e563b963b2abdf14894283152f9161f5,
-    type: 3}
-  poolSize: 50
 --- !u!1 &891884013
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,11 +1673,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4568001081719066494, guid: 0c257f3c528f23f49a5ac843794f3d8a,
-        type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 387947270}
     - target: {fileID: 6002269588366213309, guid: 0c257f3c528f23f49a5ac843794f3d8a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1774,6 +1722,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000554523250054878, guid: 0c257f3c528f23f49a5ac843794f3d8a,
+        type: 3}
+      propertyPath: _maxHealth
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8495063446791047688, guid: 0c257f3c528f23f49a5ac843794f3d8a,
         type: 3}
@@ -2206,11 +2159,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 49744417019768287, guid: 1eebd94935add6a4db66d4ed60b84199,
-        type: 3}
-      propertyPath: poolSize
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 3482114738028457479, guid: 1eebd94935add6a4db66d4ed60b84199,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2447,7 +2395,6 @@ SceneRoots:
   - {fileID: 1775609594}
   - {fileID: 212495627}
   - {fileID: 7721475352292629305}
-  - {fileID: 835066767}
   - {fileID: 256364750756299275}
   - {fileID: 7831323201208838063}
   - {fileID: 1307930560}
