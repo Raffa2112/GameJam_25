@@ -9,8 +9,11 @@ public class FractureExplode : MonoBehaviour
     public float explosionRadius = 2f;
     public Vector3 explosionOffset = new Vector3(0, 0, 0);
     public float timeToLive = 2f; // Time before the object is destroyed
+    private AudioSource audioSource;
     // Start is called before the first frame update
-    void Start()
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+    }    void Start()
     {
         
     }
@@ -22,6 +25,7 @@ public class FractureExplode : MonoBehaviour
     }
 
     public void Explode(){
+        audioSource.Play();
         Debug.Log("Exploding tooth set active");
         gameObject.transform.SetParent(null);
         gameObject.SetActive(true);
