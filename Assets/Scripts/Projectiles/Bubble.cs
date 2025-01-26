@@ -61,6 +61,11 @@ public class Bubble : MonoBehaviour
             // Destroy(gameObject);
         }
         private void OnTriggerEnter(Collider other) {
+            if(other.gameObject.CompareTag("Bubble"))
+            {
+                // Debug.Log("Bubble hit bubble");
+                return;
+            }
             ProjectilePoolPlayer.Instance.ReturnProjectile(this.gameObject.GetComponent<Bubble>());
         }
 
