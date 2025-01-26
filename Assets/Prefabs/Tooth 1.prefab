@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6724775948180487633
+--- !u!1 &702193086558525848
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6203959952404588395}
-  - component: {fileID: 7041165956300417230}
-  - component: {fileID: 5067614355928701956}
-  - component: {fileID: 7381782092016456400}
-  - component: {fileID: 1433121654935394717}
-  - component: {fileID: 314228404988383924}
+  - component: {fileID: 2143753651854005565}
+  - component: {fileID: 7273858067804039360}
+  - component: {fileID: 6550978242991258589}
+  - component: {fileID: 805857965284398465}
+  - component: {fileID: 6075114313059446144}
+  - component: {fileID: 4306246560520099978}
   m_Layer: 0
   m_Name: Tooth 1
   m_TagString: Untagged
@@ -21,36 +21,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6203959952404588395
+--- !u!4 &2143753651854005565
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6724775948180487633}
+  m_GameObject: {fileID: 702193086558525848}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 5.508753, y: 0.65, z: -7.1711845}
+  m_LocalPosition: {x: 4.80611, y: 0.672, z: -8.402909}
   m_LocalScale: {x: 30.000002, y: 30.000002, z: 30.000002}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7041165956300417230
+--- !u!33 &7273858067804039360
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6724775948180487633}
+  m_GameObject: {fileID: 702193086558525848}
   m_Mesh: {fileID: -5495902117074765545, guid: 6f28a275459ffed429d6cbe56cd9740c, type: 3}
---- !u!23 &5067614355928701956
+--- !u!23 &6550978242991258589
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6724775948180487633}
+  m_GameObject: {fileID: 702193086558525848}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,31 +86,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7381782092016456400
+--- !u!114 &805857965284398465
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6724775948180487633}
+  m_GameObject: {fileID: 702193086558525848}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe6bc5ac6b5704945a12e2fb6db0f52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rigidbody: {fileID: 314228404988383924}
+  Rigidbody: {fileID: 4306246560520099978}
   Speed: 0
   Force: 100
   Radius: 0.25
   TimeToLive: 6
   _damage: 10
---- !u!65 &1433121654935394717
+  FracturedTooth: {fileID: 5278975363651955125, guid: b9d7ec99876421c438006f4f4a514554,
+    type: 3}
+--- !u!65 &6075114313059446144
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6724775948180487633}
+  m_GameObject: {fileID: 702193086558525848}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -125,13 +127,13 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.014519461, y: 0.012356672, z: 0.018662635}
   m_Center: {x: 0, y: 0.000000001164153, z: -0.00030533358}
---- !u!54 &314228404988383924
+--- !u!54 &4306246560520099978
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6724775948180487633}
+  m_GameObject: {fileID: 702193086558525848}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
