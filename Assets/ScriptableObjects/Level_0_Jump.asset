@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94b9e08b63ccff4594526a08481170b, type: 3}
   m_Name: Level_0_Jump
   m_EditorClassIdentifier: 
-  _jumpHeight: 2
+  _jumpHeight: 3
   _gravityInAir: -40
