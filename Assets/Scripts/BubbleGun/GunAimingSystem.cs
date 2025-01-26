@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GunAimingSystem : MonoBehaviour
 {
-    [SerializeField] private Camera mainCamera; // Reference to the main camera
+    private Camera mainCamera; // Reference to the main camera
     [SerializeField] private Transform gunRotationPoint; // The object to rotate (e.g., gun or player's upper body)
     [SerializeField] private BubbleGun bubbleGun; // Reference to the BubbleGun script
     [SerializeField] private LayerMask enemyLayerMask; // LayerMask for enemies
@@ -12,7 +12,9 @@ public class GunAimingSystem : MonoBehaviour
     [SerializeField] private float joystickDeadZone = 0.1f; // Threshold to ignore small joystick movements
 
     private Vector2 aimInput = Vector2.zero;
-
+    private void Awake() {
+        mainCamera = Camera.main;
+    }
     void Update()
     {
         // Get joystick or mouse-based aiming input
