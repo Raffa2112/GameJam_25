@@ -5,6 +5,7 @@ using UnityEngine;
 public class BubbleVisual : MonoBehaviour
 {
     [SerializeField] private float[] _growthScales;
+    // [SerializeField] private float _constantGrowthScale = 1.2f;
 
     public void SetScale(int level)
     {
@@ -28,6 +29,17 @@ public class BubbleVisual : MonoBehaviour
             transform.localScale = Vector3.Lerp(startScale, targetScale, timer / duration);
             yield return null;
         }
-
     }
+
+    // private IEnumerator ConstantGrowAndShrink()
+    // {
+    //     while (true)
+    //     {
+    //         Vector3 startScale = transform.localScale;
+    //         Vector3 targetScale = startScale * _constantGrowthScale;
+
+    //         transform.localScale = Vector3.Lerp(startScale, _constantGrowthScale, timer / duration);
+    //         yield return null;
+    //     }
+    // }
 }

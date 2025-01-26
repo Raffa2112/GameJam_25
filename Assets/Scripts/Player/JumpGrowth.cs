@@ -6,6 +6,7 @@ public class JumpGrowth : MonoBehaviour
     [SerializeField] private GrowthStats_SO _growthStats;
     [SerializeField] private JumpStats_SO[] _jumpStats;
     [SerializeField] private BubbleVisual _bubbleVisual;
+    [SerializeField] private PlaySoundCooldown _playPickupSound;
 
     private Player_Jump _playerJump;
 
@@ -24,6 +25,7 @@ public class JumpGrowth : MonoBehaviour
         if (other.CompareTag("Collectable"))
         {
             GainCollectable();
+
             Destroy(other.gameObject);
         }
     }
@@ -32,6 +34,7 @@ public class JumpGrowth : MonoBehaviour
     {
         _collectablesThisLevel++;
         _totalCollectables++;
+        _playPickupSound.PlaySound();
 
         // Check if we should level up
         if (_jumpLevel >= _growthStats.CollectiblesToNextLevel.Length) return;
