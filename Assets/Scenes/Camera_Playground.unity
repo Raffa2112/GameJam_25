@@ -217,7 +217,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Target.TrackingTarget
       value: 
-      objectReference: {fileID: 8905233416322235344}
+      objectReference: {fileID: 299978583}
     - target: {fileID: 9220015074302200843, guid: 96f0344443be34141bdc18cfe283172c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -346,6 +346,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6665bacbd1f368444b7f4bc5ac44a984,
     type: 3}
   m_PrefabInstance: {fileID: 241806592}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &299978583 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2709163702903951009, guid: 0c257f3c528f23f49a5ac843794f3d8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 256364750756299275}
   m_PrefabAsset: {fileID: 0}
 --- !u!20 &387947270 stripped
 Camera:
