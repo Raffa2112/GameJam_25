@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GunAimingSystem : MonoBehaviour
 {
@@ -23,11 +24,73 @@ public class GunAimingSystem : MonoBehaviour
         
         if (aimInput.sqrMagnitude > joystickDeadZone * joystickDeadZone)
         {
-            AimGunWithJoystick();
+            // AimGunWithJoystick();
+            AimGunRelativeToCamera(aimInput);
         }
         else
         {
-            AimGunAtClosestEnemyToMouse();
+            AimGunRelativeToMouse();
+            // AimGunAtClosestEnemyToMouse();
+            // RotateGunAroundYAxis(aimInput);
+            // AimGunRelativeToCamera(aimInput);
+        }
+    }
+    void AimGunRelativeToMouse()
+    {
+        // Get the mouse position in screen space
+        Vector3 mouseScreenPosition = Input.mousePosition;
+
+        // Convert the mouse screen position to a world position
+        Ray ray = mainCamera.ScreenPointToRay(mouseScreenPosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero); // A flat plane at y = 0
+        if (groundPlane.Raycast(ray, out float enter))
+        {
+            Vector3 mouseWorldPosition = ray.GetPoint(enter);
+
+            // Calculate the direction from the gun to the mouse world position
+            Vector3 aimDirection = (mouseWorldPosition - gunRotationPoint.position).normalized;
+
+            // Calculate the angle for Y-axis rotation
+            float targetAngle = Mathf.Atan2(aimDirection.x, aimDirection.z) * Mathf.Rad2Deg;
+
+            // Rotate the gun around the Y-axis relative to the mouse position
+            Quaternion targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
+
+            // Smoothly interpolate to the target rotation
+            gunRotationPoint.rotation = Quaternion.Slerp(
+                gunRotationPoint.rotation,
+                targetRotation,
+                Time.deltaTime * 10f // Adjust speed as needed
+            );
+        }
+    }
+    void AimGunRelativeToCamera(Vector2 horizontalInput)
+    {
+        if (aimInput.sqrMagnitude > 0.01f)
+        {
+            // Get the camera's forward direction
+            Vector3 cameraForward = mainCamera.transform.forward;
+            cameraForward.y = 0f; // Flatten the direction to ignore vertical tilt
+            cameraForward.Normalize();
+
+            // Calculate the camera's right direction
+            Vector3 cameraRight = mainCamera.transform.right;
+
+            // Map the joystick/mouse input to the camera's local space
+            Vector3 aimDirection = (cameraForward * aimInput.y + cameraRight * aimInput.x).normalized;
+
+            // Calculate the angle from the input vector
+            float targetAngle = Mathf.Atan2(aimDirection.x, aimDirection.z) * Mathf.Rad2Deg;
+
+            // Rotate the gun around the Y-axis relative to the camera
+            Quaternion targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
+
+            // Smoothly interpolate to the target rotation
+            gunRotationPoint.rotation = Quaternion.Slerp(
+                gunRotationPoint.rotation,
+                targetRotation,
+                Time.deltaTime * 10f // Adjust speed as needed
+            );
         }
     }
     void RotateGunAroundYAxis(Vector2 horizontalInput)
