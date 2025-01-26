@@ -1,7 +1,11 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private Canvas _gameOverCanvas;
+
     private static GameManager _instance;
     public static GameManager Instance => _instance;
 
@@ -17,12 +21,30 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         CreateSingleton();
+        Application.targetFrameRate = 120;
     }
 
-    public void ChangeState(GameState newState)
+    private void ChangeState(GameState newState)
     {
         _currentState = newState;
-        Debug.Log("Game State: " + _currentState);
+    }
+
+    public void OnGameOver()
+    {
+        ChangeState(GameState.GameOver);
+        StartCoroutine(OpenGameOverMenu());
+    }
+
+    private IEnumerator OpenGameOverMenu()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _gameOverCanvas.gameObject.SetActive(true);
+    }
+
+    public void OnRestart()
+    {
+        ChangeState(GameState.InGame);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void CreateSingleton()

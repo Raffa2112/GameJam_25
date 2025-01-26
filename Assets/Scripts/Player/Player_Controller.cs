@@ -31,7 +31,7 @@ public class Player_Controller : MonoBehaviour
 
     private void Start()
     {
-        // _inputReader.EnableInput();
+        _inputReader.EnableInput();
     }
 
     private void OnEnable()
