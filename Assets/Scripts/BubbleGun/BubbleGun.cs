@@ -61,13 +61,13 @@ public class BubbleGun : MonoBehaviour
             // Starts reloading
             ReloadTimer = ReloadTime;
             // Shoot!
-            Bubble bullet = Instantiate(BubbleBulletPrefab, FirePoint.position, FirePoint.rotation);
-            bullet.Speed = BulletSpeed;
-            // Bubble bullet = ProjectilePoolPlayer.Instance.GetProjectile();
-            // bullet.transform.position = FirePoint.position;
-            // bullet.transform.rotation = FirePoint.rotation;
+            // Bubble bullet = Instantiate(BubbleBulletPrefab, FirePoint.position, FirePoint.rotation);
             // bullet.Speed = BulletSpeed;
-            // bullet.ShootProjectile();
+            Bubble bullet = ProjectilePoolPlayer.Instance.GetProjectile();
+            bullet.transform.position = FirePoint.position;
+            bullet.transform.rotation = FirePoint.rotation;
+            bullet.Speed = BulletSpeed;
+            bullet.ShootProjectile();
             // Sound
             // AudioSource.PlayOneShot(ClipShooting);
 
