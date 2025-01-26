@@ -2524,20 +2524,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3017943855832657689, guid: d2499a2f5f1188e469a6acea06796897,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 7817100129211690552, guid: d2499a2f5f1188e469a6acea06796897,
         type: 3}
       propertyPath: m_Name
       value: EnemyPlant
-      objectReference: {fileID: 0}
-    - target: {fileID: 7817100129211690552, guid: d2499a2f5f1188e469a6acea06796897,
-        type: 3}
-      propertyPath: m_TagString
-      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
