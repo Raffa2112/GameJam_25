@@ -11,6 +11,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] private Animator _animator;
     private const string IS_RUNNING = "IsRunning";
     private const string IS_JUMPING = "IsJumping";
+    private const string IS_DEAD = "IsDead";
 
     // Component References
     private CharacterController _controller;
@@ -69,6 +70,7 @@ public class Player_Controller : MonoBehaviour
     private void OnDeath()
     {
         _inputReader.DisableInput();
+        _animator.SetTrigger(IS_DEAD);
     }
 
     private void Update()

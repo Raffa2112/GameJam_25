@@ -339,6 +339,7 @@ MonoBehaviour:
   floatHeight: 2
   floatSpeed: 0.5
   floatDuration: 5
+  Bubble: {fileID: 3286374738958153386}
   MoveSpeed: 0
   AttackRange: 8
   AttackRate: 1
@@ -346,8 +347,7 @@ MonoBehaviour:
   ToothPrefab: {fileID: 251228971309557830, guid: 7b2ec7ea951eb474f820101fa24a028a,
     type: 3}
   ProjectileSpawnPoint: {fileID: 2613765853040873867}
-  projectilePool: {fileID: 49744417019768287, guid: 1eebd94935add6a4db66d4ed60b84199,
-    type: 3}
+  poolSize: 10
 --- !u!1 &4659182079051122920
 GameObject:
   m_ObjectHideFlags: 0
