@@ -7,8 +7,13 @@ using static Game_Controls;
 public class InputReader_Player : ScriptableObject, IPlayerActions
 {
     public event Action<Vector2> MoveEvent;
+    public event Action<Vector2> AimEvent;
     public event Action JumpEvent;
+
+    public event Action ShootEvent;
+
     public event Action JumpCancelledEvent;
+
 
     private Game_Controls _playerInput;
 
@@ -51,13 +56,22 @@ public class InputReader_Player : ScriptableObject, IPlayerActions
     {
         if (context.started || context.performed)
         {
-            Debug.Log("Jump");
             JumpEvent?.Invoke();
         }
         else
         {
-            Debug.Log("Jump Cancelled");
             JumpCancelledEvent?.Invoke();
         }
+    }
+
+    public void OnShoot(InputAction.CallbackContext context)
+    {
+        if (context.started)
+            ShootEvent?.Invoke();
+    }
+
+    public void OnAim(InputAction.CallbackContext context)
+    {
+        AimEvent?.Invoke(context.ReadValue<Vector2>());
     }
 }
