@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BubbleGun : MonoBehaviour
     {
+        [Header("Bubble Gun Aim Mode")]
+        // public bool lockOnAim = true;
         [Header("Bubble Bullet")]
         public Transform FirePoint;
         public Bubble BubbleBulletPrefab;
@@ -61,7 +63,11 @@ public class BubbleGun : MonoBehaviour
             // Shoot!
             Bubble bullet = Instantiate(BubbleBulletPrefab, FirePoint.position, FirePoint.rotation);
             bullet.Speed = BulletSpeed;
-
+            // Bubble bullet = ProjectilePoolPlayer.Instance.GetProjectile();
+            // bullet.transform.position = FirePoint.position;
+            // bullet.transform.rotation = FirePoint.rotation;
+            // bullet.Speed = BulletSpeed;
+            // bullet.ShootProjectile();
             // Sound
             // AudioSource.PlayOneShot(ClipShooting);
 

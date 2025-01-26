@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bubble : MonoBehaviour
-    {
-        [Header("Physics")]
+public class Tooth : MonoBehaviour
+{
+    [Header("Physics")]
         public Rigidbody Rigidbody;
         [HideInInspector]
         public float Speed; // m/s
@@ -19,9 +19,15 @@ public class Bubble : MonoBehaviour
         public float Force = 100; // Netwons
         [Range(0.1f, 1)]
         public float Radius = 0.25f; // m
+        public int TimeToLive = 6;
 
         // Start is called before the first frame update
         void Start()
+        {
+            // Rigidbody.velocity = transform.forward * Speed;
+        }
+
+        public void ShootProjectile()
         {
             Rigidbody.velocity = transform.forward * Speed;
         }
@@ -49,5 +55,4 @@ public class Bubble : MonoBehaviour
             // Destroy the bullet on collision
             // Destroy(gameObject);
         }
-
-    }
+}
