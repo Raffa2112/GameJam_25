@@ -60,5 +60,8 @@ public class Bubble : MonoBehaviour
             // Destroy the bullet on collision
             // Destroy(gameObject);
         }
+        private void OnTriggerEnter(Collider other) {
+            ProjectilePoolPlayer.Instance.ReturnProjectile(this.gameObject.GetComponent<Bubble>());
+        }
 
     }
