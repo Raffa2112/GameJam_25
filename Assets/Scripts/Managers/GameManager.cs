@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Canvas _gameOverCanvas;
+    [SerializeField] private Canvas _winCanvas;
 
     private static GameManager _instance;
     public static GameManager Instance => _instance;
@@ -33,6 +34,11 @@ public class GameManager : MonoBehaviour
     {
         ChangeState(GameState.GameOver);
         StartCoroutine(OpenGameOverMenu());
+    }
+
+    public void OnWin()
+    {
+        _winCanvas.gameObject.SetActive(true);
     }
 
     private IEnumerator OpenGameOverMenu()

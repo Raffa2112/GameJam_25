@@ -73,6 +73,11 @@ public class Player_Controller : MonoBehaviour
         _animator.SetTrigger(IS_DEAD);
     }
 
+    public void OnWin()
+    {
+        _inputReader.DisableInput();
+    }
+
     private void Update()
     {
         // get all movement vectors
