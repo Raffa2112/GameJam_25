@@ -817,6 +817,8 @@ MonoBehaviour:
     type: 3}
   ProjectileSpawnPoint: {fileID: 1895074351}
   EnemyHeadPivot: {fileID: 0}
+  BubbleHit: {fileID: 0}
+  Spit: {fileID: 0}
 --- !u!136 &1307930559
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2163,6 +2165,8 @@ MonoBehaviour:
     type: 3}
   ProjectileSpawnPoint: {fileID: 0}
   EnemyHeadPivot: {fileID: 0}
+  BubbleHit: {fileID: 0}
+  Spit: {fileID: 0}
 --- !u!23 &4511254123759803355
 MeshRenderer:
   m_ObjectHideFlags: 0
