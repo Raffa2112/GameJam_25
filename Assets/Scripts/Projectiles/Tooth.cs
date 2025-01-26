@@ -13,7 +13,7 @@ public class Tooth : MonoBehaviour
     [Space]
     // When duration = 0, the bullets is destroyed
     [Range(1, 10)]
-    public float Duration = 5f; // seconds
+    private float Duration; // seconds
 
     [Header("Impact")]
     [Range(0, 1000)]
@@ -27,6 +27,7 @@ public class Tooth : MonoBehaviour
     void Start()
     {
         // Rigidbody.velocity = transform.forward * Speed;
+        Duration = TimeToLive;
     }
 
     public void ShootProjectile()

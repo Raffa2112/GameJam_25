@@ -12,7 +12,8 @@ public class Bubble : MonoBehaviour
         [Space]
         // When duration = 0, the bullets is destroyed
         [Range(1,10)]
-        public float Duration = 5f; // seconds
+        private float Duration; // seconds
+        public float TimeToLive = 10;
 
         [Header("Impact")]
         [Range(0,1000)]
@@ -26,6 +27,7 @@ public class Bubble : MonoBehaviour
             // Debug.Log("Bubble created");
             // Debug.Log("Bubble speed: " + Speed);
             // Rigidbody.velocity = transform.forward * Speed;
+            Duration = TimeToLive;
         }
 
         public void ShootProjectile()
@@ -36,9 +38,12 @@ public class Bubble : MonoBehaviour
         {
             // If the bullet has no more time to live
             // it gets destroyed
-            // Duration -= Time.deltaTime;
-            // if (Duration <= 0)
-            //     Destroy(gameObject);
+            Duration -= Time.deltaTime;
+            if (Duration <= 0)
+                ProjectilePoolPlayer.Instance.ReturnProjectile(this.gameObject.GetComponent<Bubble>());
+        }
+        private void OnEnable() {
+            Duration = TimeToLive;
         }
 
         // Bullets die on collision

@@ -156,5 +156,9 @@ public class Enemy : MonoBehaviour
         // Return to original position (optional)
         transform.position = startPosition;
         isFloating = false;
+        Bubble.SetActive(false);
+        currentState = CombatState;
+        currentState.EnterState(this);
+
     }
 }
