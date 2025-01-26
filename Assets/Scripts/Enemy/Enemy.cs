@@ -77,7 +77,8 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(FloatEffect());
             }
             //destroy other gameobject
-            Destroy(other.gameObject);
+            // Destroy(other.gameObject);
+            ProjectilePoolPlayer.Instance.ReturnProjectile(other.gameObject.GetComponent<Bubble>());
 
             //change states 
 
