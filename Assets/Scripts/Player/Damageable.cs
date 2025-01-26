@@ -13,7 +13,11 @@ public class Damageable : MonoBehaviour
     private float _invincibilityTimer = 0f;
 
     public event Action OnDeath;
-
+    public AudioClip hurtSound;
+    private AudioSource audioSource;    
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void Start()
     {
         _currentHealth = _maxHealth;
@@ -27,6 +31,7 @@ public class Damageable : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        audioSource.PlayOneShot(hurtSound);
         if (_isDead || _invincibilityTimer > 0) return;
 
         _currentHealth -= damage;
