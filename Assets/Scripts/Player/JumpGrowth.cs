@@ -5,6 +5,7 @@ public class JumpGrowth : MonoBehaviour
 {
     [SerializeField] private GrowthStats_SO _growthStats;
     [SerializeField] private JumpStats_SO[] _jumpStats;
+    [SerializeField] private BubbleVisual _bubbleVisual;
 
     private Player_Jump _playerJump;
 
@@ -31,11 +32,16 @@ public class JumpGrowth : MonoBehaviour
     {
         _collectablesThisLevel++;
         _totalCollectables++;
+
+        // Check if we should level up
+        if (_jumpLevel >= _growthStats.CollectiblesToNextLevel.Length) return;
+
         if (_collectablesThisLevel >= _growthStats.CollectiblesToNextLevel[_jumpLevel])
         {
             _collectablesThisLevel = 0;
             _jumpLevel++;
             _playerJump.SetJumpStats(_jumpStats[_jumpLevel]);
+            _bubbleVisual.SetScale(_jumpLevel);
             Debug.Log($"Jump level increased to {_jumpLevel}!");
         }
     }
