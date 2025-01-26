@@ -41,6 +41,8 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public EnemyStunnedState StunnedState = new EnemyStunnedState();
     private AudioSource AudioSource;
+    public AudioClip BubbleHit;
+    public AudioClip Spit;
     private void Awake()
     {
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -73,7 +75,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bubble"))
         {
-            AudioSource.Play();
+            AudioSource.PlayOneShot(BubbleHit);
             Bubble.SetActive(true);
             // Debug.Log("Bubble hit enemy");
             // Start floating effect
@@ -115,6 +117,9 @@ public class Enemy : MonoBehaviour
         Projectile.transform.rotation = ProjectileSpawnPoint.rotation;
         Projectile.Speed = BulletSpeed;
         Projectile.ShootProjectile();
+
+        // Sound
+        AudioSource.PlayOneShot(Spit);
 
         // Tooth projectile = projectilePool.GetProjectile();
         // projectile.transform.position = ProjectileSpawnPoint.position;

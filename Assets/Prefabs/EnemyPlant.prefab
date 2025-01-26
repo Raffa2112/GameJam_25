@@ -372,6 +372,8 @@ MonoBehaviour:
     type: 3}
   ProjectileSpawnPoint: {fileID: 8991401539161698132}
   EnemyHeadPivot: {fileID: 6094140771137993299}
+  BubbleHit: {fileID: 8300000, guid: 4828ec2c42aa347bd953725e541eaa8c, type: 3}
+  Spit: {fileID: 8300000, guid: ffc17560d3b954e639e3f89b2a311af4, type: 3}
 --- !u!82 &1979580234244316295
 AudioSource:
   m_ObjectHideFlags: 0
@@ -382,7 +384,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4828ec2c42aa347bd953725e541eaa8c, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

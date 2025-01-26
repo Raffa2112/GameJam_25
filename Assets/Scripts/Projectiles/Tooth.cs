@@ -43,38 +43,27 @@ public class Tooth : MonoBehaviour
         Duration -= Time.deltaTime;
         if (Duration <= 0)
             ProjectilePool.Instance.ReturnProjectile(this.gameObject.GetComponent<Tooth>());
-    
+
     }
-    private void OnEnable() {
+    private void OnEnable()
+    {
         Duration = TimeToLive;
     }
 
-    // Bullets die on collision
-    void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        // Add explosive force to objects (if they have a rigidbody)
-        Rigidbody rigidbody = collision.collider.GetComponent<Rigidbody>();
-        if (rigidbody != null)
-        {
-            rigidbody.AddExplosionForce(Force, transform.position, Radius);
-            Debug.Log("hit!" + rigidbody.name);
-        }
-
-        if (collision.gameObject.TryGetComponent(out Damageable damageable))
-        {
-            damageable.TakeDamage(_damage);
-        }
-
-        // Destroy the bullet on collision
-        // Destroy(gameObject);
-    }
-    private void OnTriggerEnter(Collider other) {
-        if(!other.gameObject.CompareTag("Enemy"))
+        if (!other.gameObject.CompareTag("Enemy"))
         {
             ProjectilePool.Instance.ReturnProjectile(this.gameObject.GetComponent<Tooth>());
             GameObject fracturedTooth = Instantiate(FracturedTooth, transform.position, transform.rotation);
             fracturedTooth.GetComponent<FractureExplode>().Explode();
+
+            if (other.gameObject.TryGetComponent(out Damageable damageable))
+            {
+                damageable.TakeDamage(_damage);
+            }
         }
-        
+
+
     }
 }
