@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 251228971309557830, guid: 7b2ec7ea951eb474f820101fa24a028a,
     type: 3}
-  poolSize: 30
+  poolSize: 100

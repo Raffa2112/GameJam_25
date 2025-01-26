@@ -7,7 +7,7 @@ public class ProjectilePool : MonoBehaviour
     public Tooth projectilePrefab;
     public int poolSize = 10;
 
-    private Queue<Tooth> DeactivatedProjectilePool;
+    private Queue<Tooth> TeethPool;
     // private Queue<Tooth> ActivatedProjectilePool;
 
     void Awake()
@@ -23,7 +23,7 @@ public class ProjectilePool : MonoBehaviour
             return;
         }
 
-        DeactivatedProjectilePool = new Queue<Tooth>();
+        TeethPool = new Queue<Tooth>();
         // ActivatedProjectilePool = new Queue<Tooth>();
 
         // Initialize pool with deactivated projectiles
@@ -31,38 +31,38 @@ public class ProjectilePool : MonoBehaviour
         {
             Tooth projectile = Instantiate(projectilePrefab);
             projectile.gameObject.SetActive(false);
-            DeactivatedProjectilePool.Enqueue(projectile);
+            TeethPool.Enqueue(projectile);
         }
     }
 
     public Tooth GetProjectile()
     {
         // Check if there are any deactivated projectiles available
-        if (DeactivatedProjectilePool.Count > 0)
+        if (TeethPool.Count > 0)
         {
-            Tooth projectile = DeactivatedProjectilePool.Dequeue();
+            Tooth projectile = TeethPool.Dequeue();
             projectile.gameObject.SetActive(true);
             // ActivatedProjectilePool.Enqueue(projectile);
-            DeactivatedProjectilePool.Enqueue(projectile);
+            TeethPool.Enqueue(projectile);
             return projectile;
         }
 
         // If the deactivated pool is empty, instantiate a new projectile
         Tooth newProjectile = Instantiate(projectilePrefab);
         // ActivatedProjectilePool.Enqueue(newProjectile);
-        DeactivatedProjectilePool.Enqueue(newProjectile);
+        TeethPool.Enqueue(newProjectile);
         return newProjectile;
     }
 
-    // public void ReturnProjectile(Tooth projectile)
-    // {
-    //     // Deactivate the projectile and move it back to the deactivated pool
-    //     if (ActivatedProjectilePool.Contains(projectile))
-    //     {
-    //         ActivatedProjectilePool.Dequeue();
-    //     }
+    public void ReturnProjectile(Tooth projectile)
+    {
+        // Deactivate the projectile and move it back to the deactivated pool
+        if (TeethPool.Contains(projectile))
+        {
+            TeethPool.Dequeue();
+        }
 
-    //     projectile.gameObject.SetActive(false);
-    //     DeactivatedProjectilePool.Enqueue(projectile);
-    // }
+        projectile.gameObject.SetActive(false);
+        TeethPool.Enqueue(projectile);
+    }
 }
