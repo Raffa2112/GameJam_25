@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8689d8af02ac9244caacdd13f9cc809c, type: 3}
   m_Name: CollectibleLevels
   m_EditorClassIdentifier: 
-  _collectiblesToNextLevel: 050000000a000000
+  _collectiblesToNextLevel: 050000000500000005000000
